@@ -1,0 +1,21 @@
+@startuml
+
+class LanternModel {
+    - texture : string
+
+    + LanternModel(t : string)
+    + create(x : int, y : int)
+}
+
+class LanternFactory {
+    - models : Map<string, LanternModel*>
+    + getModel(texture : string) : LanternModel
+}
+
+class Client {
+    + main()
+}
+
+Client --> LanternFactory
+LanternFactory --> LanternModel
+@enduml

@@ -1,0 +1,17 @@
+@startuml
+
+class Lantern {
+    - texture : string
+    - x : int
+    - y : int
+
+    + Lantern(t : string, px : int, py : int)
+    + create()
+}
+
+class Client {
+    + main()
+}
+
+Client --> Lantern
+@enduml
