@@ -1,0 +1,31 @@
+@startuml prototype_item
+
+skinparam classAttributeIconSize 0
+
+abstract class ItemBase <<Item>> {
+    # nome: string
+    # raridade: int
+    + Item(Nome: string, Raridade: int)
+    + Item(It: Item&)
+    + {abstract} clonar(): ItemBase*
+    + {abstract} usar(): void
+}
+
+class Cura {
+    + Cura(Nome: string, Raridade: int)
+    + Cura(It: Cura&)
+    + clonar(): ItemBase*
+    + usar(): void
+}
+
+class Agilidade {
+    + Agilidade(Nome: string, Raridade: int)
+    + Agilidade(It: Agilidade&)
+    + clonar(): ItemBase*
+    + usar(): void
+}
+
+Cura --|> ItemBase
+Agilidade --|> ItemBase
+
+@enduml
