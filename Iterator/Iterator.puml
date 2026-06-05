@@ -1,0 +1,46 @@
+@startuml iterator_rpg
+
+skinparam classAttributeIconSize 0
+
+interface Iterator {
+    + hasNext(): bool
+    + next(): Personagem*
+}
+
+class IteratorRpg {
+    - personagens: vector<Personagem*>&
+    - indicePersonagem: size_t
+    + hasNext(): bool
+    + next(): Personagem*
+}
+
+class Rpg {
+    - personagens: vector<Personagem*>
+    + adicionarPersonagem(p: Personagem*): void
+    + criarIterator(): Iterator*
+}
+
+class Personagem {
+    - nome: string
+    - nivel: int
+    - inventario: vector<Item*>
+    + getNome(): string
+    + getNivel(): int
+    + adicionarItem(i: Item*): void
+    + getInventario(): vector<Item*>
+}
+
+class Item {
+    - nome: string
+    - peso: int
+    + getNome(): string
+    + getPeso(): int
+}
+
+IteratorRpg ..|> Iterator
+Rpg ..> Iterator : cria
+Rpg "1" *-- "*" Personagem : contém
+Personagem "1" *-- "*" Item : contém
+IteratorRpg ..> Personagem : usa
+
+@enduml
